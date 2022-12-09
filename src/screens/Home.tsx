@@ -16,11 +16,27 @@ const HomeScreen = () => {
           <Text style={styles.title}>{connectedDevice?.name ?? "Unknown"}</Text>
 
           {status === "connected" || status === "disconnecting" ? (
-            <Text
-              style={{ color: "#7765da", fontSize: 40, fontWeight: "bold" }}
+            <View
+              style={{
+                backgroundColor: palette.white,
+                height: 50,
+                width: `${currentValue}%`,
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: palette.borderRadius,
+              }}
             >
-              {currentValue}
-            </Text>
+              <Text
+                style={{
+                  color: "#7765da",
+                  fontSize: 24,
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              >
+                {currentValue}%
+              </Text>
+            </View>
           ) : (
             <ActivityIndicator />
           )}
