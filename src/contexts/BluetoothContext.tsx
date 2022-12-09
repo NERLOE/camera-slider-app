@@ -15,6 +15,10 @@ type BLEStatus =
   | "error"
   | "disconnecting";
 
+export const SERVICE_UUID = "1f2d8a07-458d-44f0-a1b2-ecb92f5d3802";
+export const CHARACTERISTIC_UUID_TX = "7719d3cf-bb84-4bc3-a705-fa06e2ccd285";
+export const CHARACTERISTIC_UUID_RX = "593122f1-bc31-46ae-9521-2f86e2ea2740";
+
 const bleManager = new BleManager();
 
 interface BluetoothLowEnergyAPI {
@@ -143,8 +147,8 @@ const BluetoothContextProvider = ({ children }: Props) => {
   const startStreamingData = async (device: Device) => {
     if (device) {
       const subscription = device.monitorCharacteristicForService(
-        "1f2d8a07-458d-44f0-a1b2-ecb92f5d3802",
-        "7719d3cf-bb84-4bc3-a705-fa06e2ccd285",
+        SERVICE_UUID,
+        CHARACTERISTIC_UUID_TX,
         (error, characteristic) => {
           if (!characteristic) return;
 

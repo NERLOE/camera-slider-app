@@ -7,6 +7,7 @@ import BluetoothIcon from "@assets/BluetoothIcon";
 import { useState } from "react";
 import { palette } from "~/theme/themes";
 import SafeAreaView from "~/components/SafeAreaView";
+import { Easing } from "react-native";
 
 const FindDevice = () => {
   const { requestPermissions, scanForDevices } = useBLE();
@@ -21,11 +22,13 @@ const FindDevice = () => {
           useNativeDriver: false,
           toValue: 1,
           duration: 1000,
+          easing: Easing.inOut(Easing.ease),
         }),
         Animated.timing(searchAnim, {
           useNativeDriver: false,
           toValue: 0,
           duration: 1000,
+          easing: Easing.inOut(Easing.ease),
         }),
       ]),
     ).start();
